@@ -1,0 +1,203 @@
+/* 1. GOOGLE FONTS IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 2. VARIABLES & RESET */
+:root {
+    --bg-color: #0f172a;       /* Deep Dark Blue */
+    --card-bg: #1e293b;        /* Lighter Blue/Grey */
+    --text-color: #e2e8f0;     /* Off-white text */
+    --accent-color: #38bdf8;   /* Bright Cyan */
+    --accent-hover: #0ea5e9;   /* Darker Cyan */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* 3. LAYOUT UTILITIES */
+.section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0; /* Hidden initially for animation */
+    animation: fadeIn 1s forwards;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--accent-color);
+    display: inline-block;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+}
+
+/* 4. HEADER */
+.header {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(0 0 0), rgba(15, 23, 42, 0.9)), url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center/cover;
+    text-align: center;
+    padding: 20px;
+    animation: slideDown 1s ease-out;
+}
+
+.header h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Gradient Text Effect */
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+}
+
+/* 5. ABOUT SECTION */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-content img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); /* Glow effect */
+}
+
+/* 6. SKILLS (With Animation) */
+.skill {
+    margin-bottom: 20px;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.progress {
+    background: #334155;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--accent-color);
+    width: 0; /* Start at 0 for animation */
+    border-radius: 5px;
+    animation: fillBar 1.5s ease-out forwards;
+    animation-delay: 0.5s; /* Wait a bit before starting */
+}
+
+/* Set specific widths for different skills */
+.html { --target-width: 90%; }
+.css { --target-width: 85%; }
+.responsive { --target-width: 80%; }
+.js { --target-width: 60%; }
+.python { --target-width: 100%; }
+.dbms { --target-width: 70%; }
+.kotlin { --target-width: 60%; }
+.photoshop { --target-width: 80%; }
+.video-editing { --target-width: 90%; }
+/* 7. PROJECTS GRID */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+/* Hover Effect: Card floats up and glows */
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3 {
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* 8. BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--accent-color);
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+}
+
+/* 9. FOOTER */
+.footer {
+    background-color: #020617;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+    color: #64748b;
+}
+
+/* 10. ANIMATIONS (@keyframes) */
+
+/* Fade in sections */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Slide Header Down */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Fill Progress Bars */
+@keyframes fillBar {
+    from { width: 0; }
+    to { width: var(--target-width); }
+}
+
+/* Responsive Tweaks for Mobile */
+@media (max-width: 768px) {
+    .header h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+}
